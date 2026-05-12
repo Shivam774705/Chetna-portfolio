@@ -11,7 +11,7 @@ import {
   BarChart3,
   PieChart,
 } from "lucide-react";
-import profile from "@/assets/profile.jpg";
+import profile from "@/assets/profile.png";
 
 function FloatingChip({
   icon: Icon,
