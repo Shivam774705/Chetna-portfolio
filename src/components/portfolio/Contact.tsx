@@ -3,6 +3,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Mail, Phone, Linkedin, Github, Send, CheckCircle2, MapPin } from "lucide-react";
 import emailjs from "@emailjs/browser";
 import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
 import { SectionTitle } from "./SectionTitle";
 import { toast } from "sonner";
 
@@ -33,25 +35,22 @@ const contacts = [
 ];
 
 export function Contact() {
-  const [form, setForm] = useState<FormState>({ name: "", email: "", subject: "", message: "" });
-  const [errors, setErrors] = useState<Partial<Record<keyof FormState, string>>>({});
   const [sent, setSent] = useState(false);
   const [loading, setLoading] = useState(false);
   const [serverError, setServerError] = useState<string | null>(null);
 
-  const onSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm<FormState>({
+    resolver: zodResolver(schema),
+    defaultValues: { name: "", email: "", subject: "", message: "" },
+  });
+
+  const onSubmit = async (data: FormState) => {
     setServerError(null);
-    const parsed = schema.safeParse(form);
-    if (!parsed.success) {
-      const fe: Partial<Record<keyof FormState, string>> = {};
-      parsed.error.issues.forEach((i) => {
-        fe[i.path[0] as keyof FormState] = i.message;
-      });
-      setErrors(fe);
-      return;
-    }
-    setErrors({});
     setLoading(true);
 
     // EmailJS — configure with your own keys
@@ -61,7 +60,7 @@ export function Contact() {
 
     try {
       if (SERVICE_ID && TEMPLATE_ID && PUBLIC_KEY && SERVICE_ID !== "your_service_id") {
-        await emailjs.send(SERVICE_ID, TEMPLATE_ID, parsed.data as any, { publicKey: PUBLIC_KEY });
+        await emailjs.send(SERVICE_ID, TEMPLATE_ID, data as any, { publicKey: PUBLIC_KEY });
       } else {
         // Fallback simulated send so the UI works out-of-the-box
         console.warn("EmailJS keys missing. Message not actually sent. Check .env file.");
@@ -71,7 +70,7 @@ export function Contact() {
         await new Promise((r) => setTimeout(r, 900));
       }
       setSent(true);
-      setForm({ name: "", email: "", subject: "", message: "" });
+      reset();
       setTimeout(() => setSent(false), 4500);
     } catch (err) {
       console.error("EmailJS Error:", err);
@@ -89,20 +88,18 @@ export function Contact() {
       <label className="block text-sm font-semibold text-secondary mb-1.5">{label}</label>
       {textarea ? (
         <textarea
-          value={form[k]}
-          onChange={(e) => setForm({ ...form, [k]: e.target.value })}
+          {...register(k)}
           rows={5}
           className="w-full rounded-xl bg-white/70 border border-border focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none px-4 py-3 text-sm transition"
         />
       ) : (
         <input
           type={type}
-          value={form[k]}
-          onChange={(e) => setForm({ ...form, [k]: e.target.value })}
+          {...register(k)}
           className="w-full rounded-xl bg-white/70 border border-border focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none px-4 py-3 text-sm transition"
         />
       )}
-      {errors[k] && <p className="mt-1 text-xs text-destructive">{errors[k]}</p>}
+      {errors[k] && <p className="mt-1 text-xs text-destructive">{errors[k]?.message}</p>}
     </div>
   );
 
@@ -166,7 +163,7 @@ export function Contact() {
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            onSubmit={onSubmit}
+            onSubmit={handleSubmit(onSubmit)}
             className="lg:col-span-3 glass-strong rounded-3xl p-7 space-y-4 relative"
           >
             <div className="grid sm:grid-cols-2 gap-4">
