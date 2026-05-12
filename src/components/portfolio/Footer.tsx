@@ -74,10 +74,23 @@ export function Footer() {
         </div>
 
         <div className="mt-10 pt-6 border-t border-border/60 flex flex-col sm:flex-row gap-3 justify-between items-center text-xs text-muted-foreground">
-          <p>© {new Date().getFullYear()} Chetna Upadhyay. All rights reserved.</p>
-          <p className="inline-flex items-center gap-1.5">
-            Designed with <Heart className="h-3.5 w-3.5 text-primary fill-primary" /> passion &
-            data-driven creativity
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-6 items-center">
+            <p>© {new Date().getFullYear()} Chetna Upadhyay. All rights reserved.</p>
+            <p className="inline-flex items-center gap-1.5">
+              Designed with <Heart className="h-3.5 w-3.5 text-primary fill-primary" /> passion &
+              data-driven creativity
+            </p>
+          </div>
+          <p className="font-medium tracking-tight">
+            Design & Developed by{" "}
+            <a
+              href="https://shivam-kumar.onrender.com"
+              target="_blank"
+              rel="noreferrer"
+              className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary font-extrabold hover:scale-110 transition-transform inline-block cursor-pointer"
+            >
+              SHIVAM
+            </a>
           </p>
         </div>
       </div>
