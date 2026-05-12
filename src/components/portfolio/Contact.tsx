@@ -4,6 +4,7 @@ import { Mail, Phone, Linkedin, Github, Send, CheckCircle2, MapPin } from "lucid
 import emailjs from "@emailjs/browser";
 import { z } from "zod";
 import { SectionTitle } from "./SectionTitle";
+import { toast } from "sonner";
 
 const schema = z.object({
   name: z.string().trim().min(2, "Name is too short").max(80),
@@ -15,9 +16,19 @@ const schema = z.object({
 type FormState = z.infer<typeof schema>;
 
 const contacts = [
-  { icon: Mail, label: "Email", value: "chetnaupadhyayru@gmail.com", href: "mailto:chetnaupadhyayru@gmail.com" },
-  { icon: Phone, label: "Phone", value: "+91 77479 59972", href: "tel:+917747959972" },
-  { icon: Linkedin, label: "LinkedIn", value: "chetna-upadhyay", href: "https://www.linkedin.com/in/chetna-upadhyay" },
+  {
+    icon: Mail,
+    label: "Email",
+    value: "chetnaupadhyayru@gmail.com",
+    href: "mailto:chetnaupadhyayru@gmail.com",
+  },
+  { icon: Phone, label: "Phone", value: "+917747959972", href: "tel:+917747959972" },
+  {
+    icon: Linkedin,
+    label: "LinkedIn",
+    value: "chetna-upadhyay",
+    href: "https://www.linkedin.com/in/chetna-upadhyay",
+  },
   { icon: Github, label: "GitHub", value: "github.com", href: "https://github.com/" },
 ];
 
@@ -34,7 +45,9 @@ export function Contact() {
     const parsed = schema.safeParse(form);
     if (!parsed.success) {
       const fe: Partial<Record<keyof FormState, string>> = {};
-      parsed.error.issues.forEach((i) => { fe[i.path[0] as keyof FormState] = i.message; });
+      parsed.error.issues.forEach((i) => {
+        fe[i.path[0] as keyof FormState] = i.message;
+      });
       setErrors(fe);
       return;
     }
@@ -47,17 +60,25 @@ export function Contact() {
     const PUBLIC_KEY = (import.meta as any).env?.VITE_EMAILJS_PUBLIC_KEY;
 
     try {
-      if (SERVICE_ID && TEMPLATE_ID && PUBLIC_KEY) {
+      if (SERVICE_ID && TEMPLATE_ID && PUBLIC_KEY && SERVICE_ID !== "your_service_id") {
         await emailjs.send(SERVICE_ID, TEMPLATE_ID, parsed.data as any, { publicKey: PUBLIC_KEY });
       } else {
         // Fallback simulated send so the UI works out-of-the-box
+        console.warn("EmailJS keys missing. Message not actually sent. Check .env file.");
+        toast.warning("Email service not configured", {
+          description: "Please set your EmailJS keys in the .env file to receive emails.",
+        });
         await new Promise((r) => setTimeout(r, 900));
       }
       setSent(true);
       setForm({ name: "", email: "", subject: "", message: "" });
       setTimeout(() => setSent(false), 4500);
     } catch (err) {
+      console.error("EmailJS Error:", err);
       setServerError("Sorry — message couldn't be sent. Please email directly.");
+      toast.error("Failed to send message", {
+        description: "There was an error connecting to the email service.",
+      });
     } finally {
       setLoading(false);
     }
@@ -88,7 +109,11 @@ export function Contact() {
   return (
     <section id="contact" className="section-pad bg-gradient-to-b from-muted/40 to-background">
       <div className="mx-auto max-w-7xl">
-        <SectionTitle eyebrow="Contact" title="Let's work together" subtitle="Have a role or project in mind? I'd love to hear from you." />
+        <SectionTitle
+          eyebrow="Contact"
+          title="Let's work together"
+          subtitle="Have a role or project in mind? I'd love to hear from you."
+        />
 
         <div className="grid lg:grid-cols-5 gap-8">
           <motion.div
@@ -99,16 +124,26 @@ export function Contact() {
           >
             <div className="glass-strong rounded-3xl p-7">
               <h3 className="text-2xl font-bold text-secondary mb-2">Get in touch</h3>
-              <p className="text-sm text-muted-foreground mb-6">Open to data analyst, business analyst & MIS roles.</p>
+              <p className="text-sm text-muted-foreground mb-6">
+                Open to data analyst, business analyst & MIS roles.
+              </p>
               <div className="space-y-3">
                 {contacts.map((c) => (
-                  <a key={c.label} href={c.href} target="_blank" rel="noreferrer" className="flex items-center gap-3 p-3 rounded-xl hover:bg-primary/5 transition group">
+                  <a
+                    key={c.label}
+                    href={c.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="flex items-center gap-3 p-3 rounded-xl hover:bg-primary/5 transition group"
+                  >
                     <div className="h-11 w-11 rounded-xl bg-gradient-to-br from-primary to-secondary grid place-items-center group-hover:scale-110 transition">
                       <c.icon className="h-5 w-5 text-white" />
                     </div>
                     <div>
                       <div className="text-xs text-muted-foreground">{c.label}</div>
-                      <div className="text-sm font-semibold text-secondary break-all">{c.value}</div>
+                      <div className="text-sm font-semibold text-secondary break-all">
+                        {c.value}
+                      </div>
                     </div>
                   </a>
                 ))}
@@ -118,7 +153,9 @@ export function Contact() {
                   </div>
                   <div>
                     <div className="text-xs text-muted-foreground">Location</div>
-                    <div className="text-sm font-semibold text-secondary">India · Open to remote</div>
+                    <div className="text-sm font-semibold text-secondary">
+                      India · Open to remote
+                    </div>
                   </div>
                 </div>
               </div>
@@ -158,11 +195,18 @@ export function Contact() {
                   className="absolute inset-0 grid place-items-center bg-white/85 backdrop-blur-sm rounded-3xl"
                 >
                   <div className="text-center">
-                    <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ type: "spring", stiffness: 200 }} className="mx-auto h-16 w-16 rounded-full bg-gradient-to-br from-primary to-secondary grid place-items-center mb-3">
+                    <motion.div
+                      initial={{ scale: 0 }}
+                      animate={{ scale: 1 }}
+                      transition={{ type: "spring", stiffness: 200 }}
+                      className="mx-auto h-16 w-16 rounded-full bg-gradient-to-br from-primary to-secondary grid place-items-center mb-3"
+                    >
                       <CheckCircle2 className="h-8 w-8 text-white" />
                     </motion.div>
                     <h3 className="text-xl font-bold text-secondary">Message sent!</h3>
-                    <p className="text-sm text-muted-foreground mt-1">I'll get back to you shortly.</p>
+                    <p className="text-sm text-muted-foreground mt-1">
+                      I'll get back to you shortly.
+                    </p>
                   </div>
                 </motion.div>
               )}

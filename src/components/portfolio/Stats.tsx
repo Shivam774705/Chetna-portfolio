@@ -41,7 +41,8 @@ export function Stats() {
                 <s.icon className="h-6 w-6 text-primary" />
               </div>
               <div className="text-4xl md:text-5xl font-extrabold text-gradient">
-                <Counter to={s.value} />{s.suffix}
+                <Counter to={s.value} />
+                {s.suffix}
               </div>
               <div className="text-sm text-muted-foreground mt-1">{s.label}</div>
             </motion.div>

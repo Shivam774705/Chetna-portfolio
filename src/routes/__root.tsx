@@ -9,6 +9,7 @@ import {
 } from "@tanstack/react-router";
 
 import appCss from "../styles.css?url";
+import { Toaster } from "@/components/ui/sonner";
 
 function NotFoundComponent() {
   return (
@@ -73,10 +74,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "Chetna Upadhyay — Data Analyst Portfolio" },
-      { name: "description", content: "Chetna Upadhyay — Data Analyst & MBA. SQL, Python, Power BI, Excel. Transforming data into business insights." },
+      {
+        name: "description",
+        content:
+          "Chetna Upadhyay — Data Analyst & MBA. SQL, Python, Power BI, Excel. Transforming data into business insights.",
+      },
       { name: "author", content: "Chetna Upadhyay" },
       { property: "og:title", content: "Chetna Upadhyay — Data Analyst Portfolio" },
-      { property: "og:description", content: "Premium portfolio of Chetna Upadhyay, Data Analyst specialising in SQL, Python, Power BI and dashboard development." },
+      {
+        property: "og:description",
+        content:
+          "Premium portfolio of Chetna Upadhyay, Data Analyst specialising in SQL, Python, Power BI and dashboard development.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
@@ -85,7 +94,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "stylesheet", href: appCss },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap" },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap",
+      },
     ],
   }),
   shellComponent: RootShell,
@@ -114,6 +126,8 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       <Outlet />
+      <Toaster />
     </QueryClientProvider>
   );
 }
+

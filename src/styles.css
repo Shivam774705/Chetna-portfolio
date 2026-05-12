@@ -76,7 +76,8 @@
   --shadow-soft: 0 10px 40px -10px oklch(0.58 0.21 263 / 0.18);
   --shadow-glow: 0 0 60px oklch(0.74 0.14 248 / 0.35);
 
-  --gradient-hero: radial-gradient(1200px 600px at 10% 0%, oklch(0.74 0.14 248 / 0.25), transparent 60%),
+  --gradient-hero:
+    radial-gradient(1200px 600px at 10% 0%, oklch(0.74 0.14 248 / 0.25), transparent 60%),
     radial-gradient(900px 500px at 90% 20%, oklch(0.58 0.21 263 / 0.22), transparent 60%),
     linear-gradient(180deg, oklch(0.985 0.005 240) 0%, oklch(0.96 0.02 245) 100%);
   --gradient-primary: linear-gradient(135deg, oklch(0.58 0.21 263), oklch(0.34 0.16 268));
@@ -84,29 +85,39 @@
 }
 
 @layer base {
-  * { border-color: var(--color-border); }
-  html { scroll-behavior: smooth; }
+  * {
+    border-color: var(--color-border);
+  }
+  html {
+    scroll-behavior: smooth;
+  }
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
   }
-  h1, h2, h3, h4 { font-family: var(--font-display); letter-spacing: -0.02em; }
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+  }
 }
 
 @layer components {
   .glass {
-    background: rgba(255,255,255,0.55);
+    background: rgba(255, 255, 255, 0.55);
     backdrop-filter: blur(18px) saturate(140%);
     -webkit-backdrop-filter: blur(18px) saturate(140%);
-    border: 1px solid rgba(255,255,255,0.6);
+    border: 1px solid rgba(255, 255, 255, 0.6);
     box-shadow: 0 8px 32px -12px oklch(0.34 0.16 268 / 0.18);
   }
   .glass-strong {
-    background: rgba(255,255,255,0.7);
+    background: rgba(255, 255, 255, 0.7);
     backdrop-filter: blur(24px) saturate(150%);
-    border: 1px solid rgba(255,255,255,0.7);
+    border: 1px solid rgba(255, 255, 255, 0.7);
     box-shadow: 0 20px 60px -20px oklch(0.34 0.16 268 / 0.25);
   }
   .text-gradient {
@@ -115,24 +126,42 @@
     background-clip: text;
     color: transparent;
   }
-  .bg-hero { background: var(--gradient-hero); }
+  .bg-hero {
+    background: var(--gradient-hero);
+  }
   .btn-primary {
     background: var(--gradient-primary);
     color: var(--primary-foreground);
     box-shadow: var(--shadow-soft);
-    transition: transform .25s ease, box-shadow .25s ease;
+    transition:
+      transform 0.25s ease,
+      box-shadow 0.25s ease;
   }
-  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 18px 50px -12px oklch(0.58 0.21 263 / 0.45); }
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 18px 50px -12px oklch(0.58 0.21 263 / 0.45);
+  }
   .btn-ghost-glass {
-    background: rgba(255,255,255,0.6);
-    border: 1px solid rgba(37,99,235,0.25);
+    background: rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(37, 99, 235, 0.25);
     color: var(--secondary);
-    transition: all .25s ease;
+    transition: all 0.25s ease;
   }
-  .btn-ghost-glass:hover { background: rgba(255,255,255,0.9); transform: translateY(-2px); }
+  .btn-ghost-glass:hover {
+    background: rgba(255, 255, 255, 0.9);
+    transform: translateY(-2px);
+  }
 
-  .section-pad { padding: 6rem 1.5rem; }
-  @media (min-width: 768px) { .section-pad { padding: 8rem 2rem; } }
+  .section-pad {
+    padding: 6rem 1.5rem;
+  }
+  @media (min-width: 768px) {
+    .section-pad {
+      padding: 8rem 2rem;
+    }
+  }
 }
 
-@font-face { font-display: swap; }
+@font-face {
+  font-display: swap;
+}

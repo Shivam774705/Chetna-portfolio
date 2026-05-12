@@ -45,7 +45,9 @@ export function Navbar() {
             <div className="h-9 w-9 rounded-xl btn-primary grid place-items-center">
               <BarChart3 className="h-5 w-5 text-primary-foreground" />
             </div>
-            <span className="font-display font-bold text-lg text-secondary">Chetna<span className="text-primary">.</span></span>
+            <span className="font-display font-bold text-lg text-secondary">
+              Chetna<span className="text-primary">.</span>
+            </span>
           </Link>
 
           <nav className="hidden lg:flex items-center gap-1">

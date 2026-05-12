@@ -46,12 +46,16 @@ export function Experience() {
               <div className="absolute left-4 md:left-auto md:right-0 top-4 -translate-x-1/2 md:translate-x-1/2 h-8 w-8 rounded-full btn-primary grid place-items-center ring-4 ring-background">
                 <Briefcase className="h-4 w-4 text-primary-foreground" />
               </div>
-              {i % 2 !== 0 && <div className="hidden md:block absolute left-0 top-4 -translate-x-1/2 h-8 w-8" />}
+              {i % 2 !== 0 && (
+                <div className="hidden md:block absolute left-0 top-4 -translate-x-1/2 h-8 w-8" />
+              )}
 
               <motion.div whileHover={{ y: -4 }} className="glass-strong rounded-2xl p-6">
                 <div className="flex flex-wrap items-start justify-between gap-2 mb-2">
                   <h3 className="text-xl font-bold text-secondary">{exp.role}</h3>
-                  <span className="text-xs font-semibold px-3 py-1 rounded-full bg-primary/10 text-primary">{exp.period}</span>
+                  <span className="text-xs font-semibold px-3 py-1 rounded-full bg-primary/10 text-primary">
+                    {exp.period}
+                  </span>
                 </div>
                 <div className="text-primary font-semibold mb-3">{exp.company}</div>
                 <ul className="space-y-2">

@@ -3,9 +3,21 @@ import { Trophy, Music, FileBadge } from "lucide-react";
 import { SectionTitle } from "./SectionTitle";
 
 const items = [
-  { icon: Music, title: "1st Prize — College Singing Competition", desc: "Winner of the inter-college singing competition, demonstrating confidence and stage presence." },
-  { icon: FileBadge, title: "DIGITAL 101 Journey Certificate", desc: "IT-ITES SSC NASSCOM recognized digital literacy program." },
-  { icon: Trophy, title: "Project Presentation Award", desc: "Awarded for delivering an outstanding analytical project presentation." },
+  {
+    icon: Music,
+    title: "1st Prize — College Singing Competition",
+    desc: "Winner of the inter-college singing competition, demonstrating confidence and stage presence.",
+  },
+  {
+    icon: FileBadge,
+    title: "DIGITAL 101 Journey Certificate",
+    desc: "IT-ITES SSC NASSCOM recognized digital literacy program.",
+  },
+  {
+    icon: Trophy,
+    title: "Project Presentation Award",
+    desc: "Awarded for delivering an outstanding analytical project presentation.",
+  },
 ];
 
 export function Achievements() {

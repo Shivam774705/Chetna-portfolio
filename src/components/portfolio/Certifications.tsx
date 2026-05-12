@@ -47,7 +47,9 @@ export function Certifications() {
                   <c.icon className="h-10 w-10 text-white" />
                 </div>
                 <div className="text-center">
-                  <div className="text-xs font-bold tracking-widest text-primary uppercase mb-2">{c.issuer}</div>
+                  <div className="text-xs font-bold tracking-widest text-primary uppercase mb-2">
+                    {c.issuer}
+                  </div>
                   <h3 className="text-lg font-bold text-secondary mb-3 leading-snug">{c.title}</h3>
                   <p className="text-sm text-muted-foreground">{c.desc}</p>
                 </div>

@@ -1,5 +1,18 @@
 import { motion } from "framer-motion";
-import { Brain, Database, Code, BarChart3, FileSpreadsheet, PieChart, Boxes, Sparkles, Server, Terminal, BookOpen, Table2 } from "lucide-react";
+import {
+  Brain,
+  Database,
+  Code,
+  BarChart3,
+  FileSpreadsheet,
+  PieChart,
+  Boxes,
+  Sparkles,
+  Server,
+  Terminal,
+  BookOpen,
+  Table2,
+} from "lucide-react";
 import { SectionTitle } from "./SectionTitle";
 import { stagger, item } from "./Reveal";
 
@@ -15,16 +28,32 @@ const technical = [
   { icon: Sparkles, name: "Data Visualization", level: 85 },
 ];
 
-const tools = ["VS Code", "Jupyter Notebook", "MySQL Workbench", "Advanced Excel", "SQL Data Queries"];
+const tools = [
+  "VS Code",
+  "Jupyter Notebook",
+  "MySQL Workbench",
+  "Advanced Excel",
+  "SQL Data Queries",
+];
 const toolIcons = [Terminal, BookOpen, Database, FileSpreadsheet, Table2];
 
 export function Skills() {
   return (
     <section id="skills" className="section-pad bg-gradient-to-b from-background to-muted/40">
       <div className="mx-auto max-w-7xl">
-        <SectionTitle eyebrow="Skills" title="My technical toolkit" subtitle="A curated set of tools I use to turn raw data into clear decisions." />
+        <SectionTitle
+          eyebrow="Skills"
+          title="My technical toolkit"
+          subtitle="A curated set of tools I use to turn raw data into clear decisions."
+        />
 
-        <motion.div variants={stagger} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.1 }} className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <motion.div
+          variants={stagger}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.1 }}
+          className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5"
+        >
           {technical.map((s) => (
             <motion.div
               key={s.name}
@@ -56,7 +85,9 @@ export function Skills() {
         </motion.div>
 
         <div className="mt-12">
-          <h3 className="text-center text-xl font-bold text-secondary mb-6">Tools & Technologies</h3>
+          <h3 className="text-center text-xl font-bold text-secondary mb-6">
+            Tools & Technologies
+          </h3>
           <div className="flex flex-wrap justify-center gap-3">
             {tools.map((t, i) => {
               const Icon = toolIcons[i];

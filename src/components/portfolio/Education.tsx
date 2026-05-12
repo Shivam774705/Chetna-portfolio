@@ -3,7 +3,12 @@ import { GraduationCap } from "lucide-react";
 import { SectionTitle } from "./SectionTitle";
 
 const education = [
-  { degree: "MBA — Master of Business Administration", school: "LNCT College", period: "2023 – 2025", grade: "8.03 CGPA" },
+  {
+    degree: "MBA — Master of Business Administration",
+    school: "LNCT College",
+    period: "2023 – 2025",
+    grade: "8.03 CGPA",
+  },
   { degree: "Bachelor's Degree", school: "TRS College, Rewa", period: "Graduated", grade: "75%" },
   { degree: "Higher Secondary (12th)", school: "—", period: "2018", grade: "68%" },
   { degree: "Secondary (10th)", school: "—", period: "2016", grade: "65%" },
@@ -32,7 +37,9 @@ export function Education() {
               <div className="flex-1">
                 <div className="flex items-start justify-between gap-2 flex-wrap">
                   <h3 className="font-bold text-secondary">{e.degree}</h3>
-                  <span className="text-xs font-semibold px-3 py-1 rounded-full bg-accent/15 text-secondary">{e.grade}</span>
+                  <span className="text-xs font-semibold px-3 py-1 rounded-full bg-accent/15 text-secondary">
+                    {e.grade}
+                  </span>
                 </div>
                 <div className="text-sm text-primary font-medium mt-1">{e.school}</div>
                 <div className="text-xs text-muted-foreground mt-1">{e.period}</div>

@@ -31,9 +31,23 @@ function MiniBars() {
 function MiniDonut() {
   return (
     <svg viewBox="0 0 36 36" className="h-20 w-20">
-      <circle cx="18" cy="18" r="15.9" fill="none" stroke="currentColor" className="text-muted" strokeWidth="3" />
+      <circle
+        cx="18"
+        cy="18"
+        r="15.9"
+        fill="none"
+        stroke="currentColor"
+        className="text-muted"
+        strokeWidth="3"
+      />
       <motion.circle
-        cx="18" cy="18" r="15.9" fill="none" stroke="url(#g)" strokeWidth="3" strokeLinecap="round"
+        cx="18"
+        cy="18"
+        r="15.9"
+        fill="none"
+        stroke="url(#g)"
+        strokeWidth="3"
+        strokeLinecap="round"
         initial={{ strokeDasharray: "0 100" }}
         whileInView={{ strokeDasharray: "72 100" }}
         viewport={{ once: true }}
@@ -46,7 +60,9 @@ function MiniDonut() {
           <stop offset="100%" stopColor="oklch(0.74 0.14 248)" />
         </linearGradient>
       </defs>
-      <text x="18" y="20.5" textAnchor="middle" className="fill-secondary font-bold" fontSize="7">72%</text>
+      <text x="18" y="20.5" textAnchor="middle" className="fill-secondary font-bold" fontSize="7">
+        72%
+      </text>
     </svg>
   );
 }
@@ -55,7 +71,11 @@ export function Projects() {
   return (
     <section id="projects" className="section-pad bg-gradient-to-b from-muted/40 to-background">
       <div className="mx-auto max-w-7xl">
-        <SectionTitle eyebrow="Projects" title="Featured work" subtitle="A deep dive into a real-world data analytics project." />
+        <SectionTitle
+          eyebrow="Projects"
+          title="Featured work"
+          subtitle="A deep dive into a real-world data analytics project."
+        />
 
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -68,10 +88,16 @@ export function Projects() {
           <div className="absolute -bottom-32 -left-32 h-72 w-72 rounded-full bg-accent/20 blur-3xl" />
 
           <div className="relative">
-            <span className="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-primary/10 text-primary mb-4">Featured Project</span>
-            <h3 className="text-3xl md:text-4xl font-bold text-secondary mb-4">Road Accident Data Analysis</h3>
+            <span className="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-primary/10 text-primary mb-4">
+              Featured Project
+            </span>
+            <h3 className="text-3xl md:text-4xl font-bold text-secondary mb-4">
+              Road Accident Data Analysis
+            </h3>
             <p className="text-muted-foreground mb-6">
-              Cleaned, analyzed and visualized a large dataset of accident records to surface time patterns, hotspot locations, and actionable road-safety insights — delivered as an interactive Power BI dashboard.
+              Cleaned, analyzed and visualized a large dataset of accident records to surface time
+              patterns, hotspot locations, and actionable road-safety insights — delivered as an
+              interactive Power BI dashboard.
             </p>
             <ul className="space-y-3 mb-6">
               {features.map((f) => (
@@ -85,16 +111,18 @@ export function Projects() {
             </ul>
             <div className="flex flex-wrap gap-2">
               {["Excel", "Python", "Power BI", "Data Cleaning"].map((t) => (
-                <span key={t} className="text-xs font-semibold px-3 py-1.5 rounded-lg bg-secondary/10 text-secondary">{t}</span>
+                <span
+                  key={t}
+                  className="text-xs font-semibold px-3 py-1.5 rounded-lg bg-secondary/10 text-secondary"
+                >
+                  {t}
+                </span>
               ))}
             </div>
           </div>
 
           {/* Dashboard mockup */}
-          <motion.div
-            whileHover={{ y: -6, rotate: -1 }}
-            className="relative glass rounded-2xl p-5"
-          >
+          <motion.div whileHover={{ y: -6, rotate: -1 }} className="relative glass rounded-2xl p-5">
             <div className="flex items-center gap-2 mb-4">
               <div className="h-2.5 w-2.5 rounded-full bg-destructive/60" />
               <div className="h-2.5 w-2.5 rounded-full bg-accent" />

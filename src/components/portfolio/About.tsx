@@ -4,7 +4,11 @@ import { Reveal, stagger, item } from "./Reveal";
 import { SectionTitle } from "./SectionTitle";
 
 const highlights = [
-  { icon: Database, title: "Data Analysis", desc: "SQL, Python & Excel for clean, reliable insights." },
+  {
+    icon: Database,
+    title: "Data Analysis",
+    desc: "SQL, Python & Excel for clean, reliable insights.",
+  },
   { icon: LineChart, title: "Visualization", desc: "Power BI dashboards that tell a story." },
   { icon: Target, title: "Business Focus", desc: "MBA-backed approach to decision-making." },
   { icon: Award, title: "Certified", desc: "Oracle Cloud Infra Data Science Professional." },
@@ -23,19 +27,43 @@ export function About() {
               <div className="relative glass-strong rounded-3xl p-8">
                 <h3 className="text-2xl font-bold text-secondary mb-4">Professional Summary</h3>
                 <p className="text-muted-foreground leading-relaxed">
-                  Data Analyst with hands-on experience in <span className="text-secondary font-semibold">SQL, Python, Excel and Power BI</span> for data analysis, dashboard development, and MIS reporting. Skilled in telecom data analysis, reporting automation, data cleaning, and creating impactful visual dashboards to support business decision-making.
+                  Data Analyst with hands-on experience in{" "}
+                  <span className="text-secondary font-semibold">
+                    SQL, Python, Excel and Power BI
+                  </span>{" "}
+                  for data analysis, dashboard development, and MIS reporting. Skilled in telecom
+                  data analysis, reporting automation, data cleaning, and creating impactful visual
+                  dashboards to support business decision-making.
                 </p>
                 <div className="mt-6 grid grid-cols-2 gap-4 text-sm">
-                  <div><div className="text-muted-foreground">Name</div><div className="font-semibold text-secondary">Chetna Upadhyay</div></div>
-                  <div><div className="text-muted-foreground">Degree</div><div className="font-semibold text-secondary">MBA, 8.03 CGPA</div></div>
-                  <div><div className="text-muted-foreground">Location</div><div className="font-semibold text-secondary">India</div></div>
-                  <div><div className="text-muted-foreground">Status</div><div className="font-semibold text-primary">Open to work</div></div>
+                  <div>
+                    <div className="text-muted-foreground">Name</div>
+                    <div className="font-semibold text-secondary">Chetna Upadhyay</div>
+                  </div>
+                  <div>
+                    <div className="text-muted-foreground">Degree</div>
+                    <div className="font-semibold text-secondary">MBA, 8.03 CGPA</div>
+                  </div>
+                  <div>
+                    <div className="text-muted-foreground">Location</div>
+                    <div className="font-semibold text-secondary">India</div>
+                  </div>
+                  <div>
+                    <div className="text-muted-foreground">Status</div>
+                    <div className="font-semibold text-primary">Open to work</div>
+                  </div>
                 </div>
               </div>
             </div>
           </Reveal>
 
-          <motion.div variants={stagger} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.2 }} className="grid sm:grid-cols-2 gap-5">
+          <motion.div
+            variants={stagger}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.2 }}
+            className="grid sm:grid-cols-2 gap-5"
+          >
             {highlights.map((h) => (
               <motion.div
                 key={h.title}
