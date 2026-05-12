@@ -16,7 +16,7 @@ A premium, data-driven portfolio for Chetna Upadhyay, a Data Analyst & MBA.
 - **Forms**: Zod, React Hook Form, EmailJS
 
 ## Design & Development
-Designed and developed with attitude by **Shivam**.
+Designed and developed by **Shivam**.
 
 ---
 © 2026 Chetna Upadhyay. All rights reserved.

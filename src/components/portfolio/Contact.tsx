@@ -29,7 +29,7 @@ const contacts = [
     value: "chetna-upadhyay",
     href: "https://www.linkedin.com/in/chetna-upadhyay",
   },
-  { icon: Github, label: "GitHub", value: "github.com", href: "https://github.com/" },
+  { icon: Github, label: "GitHub", value: "github.com", href: "#" },
 ];
 
 export function Contact() {
@@ -154,7 +154,7 @@ export function Contact() {
                   <div>
                     <div className="text-xs text-muted-foreground">Location</div>
                     <div className="text-sm font-semibold text-secondary">
-                      India · Open to remote
+                      India · Open to work
                     </div>
                   </div>
                 </div>

@@ -61,7 +61,7 @@ export function Footer() {
                 <Linkedin className="h-4 w-4" />
               </a>
               <a
-                href="https://github.com/"
+                href="#"
                 target="_blank"
                 rel="noreferrer"
                 aria-label="GitHub"
@@ -75,11 +75,7 @@ export function Footer() {
 
         <div className="mt-10 pt-6 border-t border-border/60 flex flex-col sm:flex-row gap-3 justify-between items-center text-xs text-muted-foreground">
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-6 items-center">
-            <p>© {new Date().getFullYear()} Chetna Upadhyay. All rights reserved.</p>
-            <p className="inline-flex items-center gap-1.5">
-              Designed with <Heart className="h-3.5 w-3.5 text-primary fill-primary" /> passion &
-              data-driven creativity
-            </p>
+            <p>© {new Date().getFullYear()} Chetna Upadhyay. All rights reserved.</p>            
           </div>
           <p className="font-medium tracking-tight">
             Design & Developed by{" "}
